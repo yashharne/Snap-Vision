@@ -6,8 +6,6 @@ torch.set_float32_matmul_precision('medium')
 import option
 args=option.parse_args()
 
-classes = ["Normal", "Abuse", "Arrest", "Arson", "Assault", "Burglary", "Explosion", "Fighting", "RoadAccidents", "Robbery", "Shooting", "Shoplifting", "Stealing", "Vandalism"]
-
 class Dataset(data.Dataset):
     def __init__(self, args, test_mode=False):
         if test_mode:
