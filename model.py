@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from utils import FeedForward, FOCUS
+from utils import FeedForward, DECOUPLED
 from performer_pytorch import Performer
 
 class AttnBlock(nn.Module):
@@ -37,7 +37,7 @@ class ConvBlock(nn.Module):
         super().__init__()
         self.norm1 = nn.LayerNorm(dim)
         self.norm2 = nn.LayerNorm(dim)
-        self.conv = FOCUS(dim, heads)
+        self.conv = DECOUPLED(dim, heads)
         self.ff = FeedForward(dim, ff_mult, dropout)
 
     def forward(self, x):

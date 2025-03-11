@@ -41,7 +41,7 @@ def test(dataloader, model, args, device = 'cuda', name = "training", main = Fal
 
         if main:
             feats = np.array(feats)
-            fit = umap.UMAP(random_state=42)
+            fit = umap.UMAP()
             reduced_feats = fit.fit_transform(feats)
             labels = np.array(labels)
             plt.figure()
