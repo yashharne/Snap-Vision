@@ -1,5 +1,7 @@
 # STEAD: Spatio-Temporal Efficient Anomaly Detection for Time and Compute Sensitive Applications
 
+This repo is the official implementation of [STEAD: Spatio-Temporal Efficient Anomaly Detection for Time and Compute Sensitive Applications]()  
+
 ### Pretrained models available in the saved_models folder
 
 **Extracted X3D Features for UCF-Crime dataset**
@@ -14,3 +16,5 @@ Feature extraction code also available for modification
         python test.py
 #### Train: Modify the option.py and run 
         python main.py
+
+## Citation
