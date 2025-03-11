@@ -9,7 +9,7 @@
 Feature extraction code also available for modification  
 
 #### Prepare the environment: 
-        pip install -r requirement.txt
+        pip install -r requirements.txt
 #### Test: Run 
         python test.py
 #### Train: Modify the option.py and run 
