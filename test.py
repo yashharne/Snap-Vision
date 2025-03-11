@@ -11,8 +11,6 @@ from torchinfo import summary
 import umap
 import numpy as np
 
-classes = ["Normal", "Abuse", "Arrest", "Arson", "Assault", "Burglary", "Explosion", "Fighting", "RoadAccidents", "Robbery", "Shooting", "Shoplifting", "Stealing", "Vandalism"]
-
 MODEL_LOCATION = 'saved_models/'
 MODEL_NAME = '888tiny'
 MODEL_EXTENSION = '.pkl'
