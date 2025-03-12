@@ -1,6 +1,6 @@
 # STEAD: Spatio-Temporal Efficient Anomaly Detection for Time and Compute Sensitive Applications
 
-This repo is the official implementation of [STEAD: Spatio-Temporal Efficient Anomaly Detection for Time and Compute Sensitive Applications]()  
+This repo is the official implementation of [STEAD: Spatio-Temporal Efficient Anomaly Detection for Time and Compute Sensitive Applications](https://arxiv.org/abs/2503.07942)  
 
 ### Pretrained models available in the saved_models folder
 
