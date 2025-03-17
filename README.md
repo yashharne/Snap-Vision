@@ -19,3 +19,12 @@ Feature extraction code also available for modification
         python main.py
 
 ## Citation
+        @misc{gao2025steadspatiotemporalefficientanomaly,
+              title={STEAD: Spatio-Temporal Efficient Anomaly Detection for Time and Compute Sensitive Applications}, 
+              author={Andrew Gao and Jun Liu},
+              year={2025},
+              eprint={2503.07942},
+              archivePrefix={arXiv},
+              primaryClass={cs.CV},
+              url={https://arxiv.org/abs/2503.07942}, 
+        }
