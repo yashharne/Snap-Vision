@@ -47,7 +47,7 @@ if __name__ == '__main__':
     random.seed(2025)
     np.random.seed(2025)
     torch.cuda.manual_seed(2025)
-    device = torch.device('cuda')
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
     # DO NOT SHUFFLE, shuffling is handled by the Dataset class and not the DataLoader

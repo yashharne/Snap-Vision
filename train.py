@@ -16,7 +16,7 @@ class TripletLoss(nn.Module):
         d = torch.cdist(x, y, p=2)
         return d
 
-    def forward(self, feats, margin = 100.0):
+    def forward(self, feats, device, margin = 100.0): #added device parameter
         bs = len(feats)
         n_feats = feats[:bs // 2]
         a_feats = feats[bs // 2:]
@@ -25,7 +25,7 @@ class TripletLoss(nn.Module):
         n_d_max, _ = torch.max(n_d, dim=0)
         a_d_min, _ = torch.min(a_d, dim=0)
         a_d_min = margin - a_d_min
-        a_d_min = torch.max(torch.zeros(bs // 2).cuda(), a_d_min)
+        a_d_min = torch.max(torch.zeros(bs // 2).to(device), a_d_min) #changed .cuda() to .to(device)
         return torch.mean(n_d_max) + torch.mean(a_d_min)
 
 class Loss(torch.nn.Module):
@@ -34,9 +34,9 @@ class Loss(torch.nn.Module):
         self.criterion = torch.nn.BCEWithLogitsLoss()
         self.triplet = TripletLoss()
 
-    def forward(self, scores, feats, targets, alpha = 0.01):
+    def forward(self, scores, feats, targets, device, alpha = 0.01): #added device parameter
         loss_ce = self.criterion(scores, targets)
-        loss_triplet = self.triplet(feats)
+        loss_triplet = self.triplet(feats, device) #added device parameter
         return loss_ce, alpha * loss_triplet
 
 def train(loader, model, optimizer, scheduler, device, epoch):
@@ -54,7 +54,7 @@ def train(loader, model, optimizer, scheduler, device, epoch):
             label += labels.cpu().detach().tolist()
 
             loss_criterion = Loss()
-            loss_ce, loss_con = loss_criterion(scores.squeeze(), feats, labels)
+            loss_ce, loss_con = loss_criterion(scores.squeeze(), feats, labels, device)
             loss = loss_ce + loss_con
 
             optimizer.zero_grad()
@@ -68,4 +68,4 @@ def train(loader, model, optimizer, scheduler, device, epoch):
         pr_auc = auc(recall, precision)
         print('train_pr_auc : ' + str(pr_auc))
         print('train_roc_auc : ' + str(roc_auc))
-        return  loss.item()
+        return loss.item()
