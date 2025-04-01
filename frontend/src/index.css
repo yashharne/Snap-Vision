@@ -1,0 +1,629 @@
+/* =========================================================================
+   GLOBAL STYLES
+   ========================================================================= */
+
+/* Base styles for the entire document */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #1a1a1a; /* Fallback color in case image loading fails */
+    color: #e0e0e0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    position: relative; /* Needed for overlay positioning */
+}
+
+/* Background Image and Overlay */
+body {
+    background-image: url('./src/assets/cctv4.jpg'); /* Replace with your image path */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Optional parallax effect */
+    background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+/* Dark overlay for better text readability on the background image */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)); /* Gradient dark overlay */
+    z-index: -1; /* Place behind the content */
+}
+
+/* Reset default link styling */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Reset default list styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* =========================================================================
+   LAYOUT CONTAINERS
+   ========================================================================= */
+
+/* Main application container for proper footer positioning */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Content area that expands to fill available space */
+.content {
+    flex-grow: 1;
+}
+
+/* =========================================================================
+   NAVIGATION BAR
+   ========================================================================= */
+
+/* Main navigation bar container */
+.navbar {
+    background-color: #252525; /* Slightly lighter dark background */
+    color: #e0e0e0;
+    padding: 1.2rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+}
+
+/* Navbar content layout */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Logo styling */
+.navbar-logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #00bcd4; /* Accent color */
+    display: flex; /* Flexbox for icon and text alignment */
+    align-items: center;
+}
+
+/* Icon styling in the logo */
+.navbar-icon {
+    margin-right: 0.5rem; /* Space between icon and text */
+    font-size: 1.5rem; /* Icon size */
+}
+
+/* Hamburger menu icon (hidden by default) */
+.menu-icon {
+    display: none; /* Hidden on larger screens */
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Navigation menu layout */
+.nav-menu {
+    display: flex;
+    transition: all 0.3s ease; /* Smooth transition for menu animation */
+}
+
+/* Navigation items spacing */
+.nav-item {
+    margin-left: 1.5rem;
+}
+
+/* Navigation links styling */
+.nav-links {
+    color: #e0e0e0;
+    text-decoration: none;
+    padding: 0.7rem 1.2rem;
+    transition: color 0.3s ease, transform 0.2s ease; /* Transitions for smooth effects */
+}
+
+/* Hover effect for navigation links */
+.nav-links:hover {
+    color: #00bcd4;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* =========================================================================
+   HOME PAGE
+   ========================================================================= */
+
+/* Hero section styling */
+.home {
+    text-align: center;
+    padding: 6rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Main heading styling */
+.home h1 {
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+    color: #00bcd4; /* Accent color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Subtle text shadow */
+}
+
+/* Hero paragraph styling */
+.home-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #b0b0b0;
+    margin-bottom: 3rem; /* Increased margin for more space */
+}
+
+/* Call-to-action button styling */
+.get-started-button {
+    background-color: #00bcd4;
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 2.5rem;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transitions and shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Button hover effect */
+.get-started-button:hover {
+    background-color: #0097a7;
+    transform: translateY(-3px);
+}
+
+/* =========================================================================
+   VIDEO UPLOADER
+   ========================================================================= */
+
+/* Video upload form container */
+.video-uploader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem;
+    border: 1px solid #333;
+    border-radius: 10px;
+    margin: 2.5rem auto;
+    max-width: 650px;
+    background-color: #252525;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Form elements styling */
+.video-uploader input[type="file"],
+.video-uploader select,
+.video-uploader button {
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+/* Button styling */
+.video-uploader button {
+    background-color: #00bcd4;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transitions and shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Button hover effect */
+.video-uploader button:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
+}
+
+/* Status indicator lights */
+.status-light {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Status light variants */
+.status-light.yellow { background-color: yellow; }
+.status-light.green { background-color: green; }
+.status-light.red { background-color: red; }
+
+/* =========================================================================
+   SUMMARIZED VIDEO DISPLAY
+   ========================================================================= */
+
+/* Video display container */
+.summarized-video-display {
+    text-align: center;
+    padding: 2.5rem;
+}
+
+/* Video element styling */
+.summarized-video-display video {
+    max-width: 100%;
+    margin-bottom: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Video control buttons */
+.summarized-video-display button {
+    background-color: #00bcd4;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 6px;
+    margin: 0 0.7rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transitions and shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Button hover effect */
+.summarized-video-display button:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
+}
+
+/* =========================================================================
+   CONTENT SECTIONS
+   ========================================================================= */
+
+/* Common styling for various content sections */
+.login-signup {
+    padding: 3rem 1.5rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: #252525;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Model Info Section */
+.model-info {
+    padding: 3rem 1.5rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: #252525;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center; /* Center-align content */
+}
+
+/* About Section */
+.about {
+    padding: 3rem 1.5rem;
+    max-width: 1200px; /* Increased width to accommodate all developers */
+    margin: 2rem auto;
+    background-color: #252525;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center; /* Center-align content */
+}
+
+/* Pricing Section */
+.pricing {
+    padding: 3rem 1.5rem;
+    max-width: 1200px; /* Increased width to accommodate all tiers */
+    margin: 2rem auto;
+    background-color: #252525;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center; /* Center-align content */
+}
+
+/* Section headings */
+.model-info h1, .login-signup h1, .about h1, .pricing h1 {
+    color: #00bcd4;
+    margin-bottom: 1.5rem;
+}
+
+.model-info p {
+    color: #b0b0b0;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.about-description {
+    color: #b0b0b0;
+    margin-bottom: 2.5rem; /* Increased spacing */
+}
+
+/* Pricing tiers layout */
+.pricing-tiers {
+    display: flex;
+    justify-content: center; /* Center the tiers horizontally */
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Add spacing between tiers */
+}
+
+/* Individual pricing tier styling */
+.tier {
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 2rem;
+    min-width: 300px; /* Slightly increased width */
+    background-color: #333;
+    transition: transform 0.2s ease;
+    text-align: left; /* Keep tier content left-aligned */
+}
+
+/* Tier hover effect */
+.tier:hover {
+    transform: translateY(-5px);
+}
+
+/* Developer Cards */
+.developer-cards {
+    display: flex;
+    justify-content: center; /* Center cards horizontally */
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Add spacing between cards */
+}
+
+.developer-card {
+    background-color: #333; /* Changed background color */
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 168px; /* Fixed width for cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    text-align: center; /* Center-align card content */
+}
+
+.developer-card:hover {
+    transform: translateY(-5px);
+}
+
+.developer-image {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50px; /* Circular image */
+    margin: 0 auto 1rem; /* Center and add margin */
+}
+
+.developer-card h3 {
+    color: #00bcd4;
+    margin-bottom: 0.5rem;
+}
+
+.developer-card p {
+    color: #b0b0b0;
+    margin-bottom: 1rem;
+}
+
+.developer-card a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.developer-card a:hover {
+    color: #0097a7;
+}
+
+/* =========================================================================
+   FOOTER
+   ========================================================================= */
+
+/* Footer container */
+.footer {
+    background-color: #252525;
+    color: #e0e0e0;
+    padding: 2rem 0;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Footer content layout */
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Footer section styling */
+.footer-section {
+    margin: 1rem;
+    min-width: 200px;
+}
+
+/* Footer section headings */
+.footer-section h3 {
+    color: #00bcd4;
+    margin-bottom: 1rem;
+}
+
+/* Footer paragraph styling */
+.footer-section p {
+    line-height: 1.6;
+}
+
+/* Footer links styling */
+.footer-section ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Footer link hover effect */
+.footer-section ul li a:hover {
+    color: #00bcd4;
+}
+
+/* Social media links */
+.social-links {
+    display: flex;
+}
+
+/* Social icon styling */
+.social-links a {
+    color: #e0e0e0;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Social icon hover effect */
+.social-links a:hover {
+    color: #00bcd4;
+}
+
+/* Footer bottom bar */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    margin-top: 2rem;
+}
+
+/* =========================================================================
+   HISTORY PAGE
+   ========================================================================= */
+
+.history-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Space between cards */
+}
+
+.history-card {
+    background-color: #252525;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 300px; /* Fixed width for cards */
+    margin: 0; /* Remove default margin */
+}
+
+.history-card h2 {
+    color: #00bcd4;
+    margin-bottom: 1rem;
+}
+
+.history-card video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.history-card p {
+    color: #b0b0b0;
+}
+
+.history-card p strong {
+    color: #e0e0e0;
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================= */
+
+/* Responsive adjustments for developer cards on different screen sizes */
+@media (max-width: 1200px) {
+    .developer-card {
+        width: calc(20% - 1.5rem); /* 5 columns on large screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .developer-card {
+        width: calc(33.333% - 1.5rem); /* 3 columns on medium screens */
+    }
+    .tier {
+        min-width: calc(50% - 1.5rem); /* Two columns on medium screens */
+    }
+}
+
+/* Mobile-first media queries */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* Disable parallax effect on mobile */
+    }
+
+    body::before {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)); /* Darker overlay for mobile */
+    }
+
+    /* Adjust container padding */
+    .navbar-container, .home, .model-info, .pricing, .about, .login-signup {
+        padding: 1.5rem;
+    }
+
+    /* Vertical navigation menu */
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px; /* Adjust as needed */
+        left: 0;
+        width: 100%;
+        background-color: #252525;
+        display: none; /* Hidden by default */
+    }
+
+    .nav-menu.active {
+        display: flex; /* Show menu when active */
+    }
+
+    /* Adjust navigation item spacing */
+    .nav-item {
+        margin: 0.7rem 0;
+    }
+
+    /* Display hamburger menu icon on small screens */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Stack pricing tiers vertically on mobile */
+    .tier {
+        min-width: 100%;
+    }
+
+    /* Stack footer content on mobile */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Adjust developer card layout for mobile */
+    .developer-cards {
+        gap: 1rem;
+    }
+
+    .developer-card {
+        width: calc(50% - 1.5rem); /* 2 columns on small screens */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Stack developer cards vertically on very small screens */
+    .developer-card {
+        width: 100%;
+    }
+}
