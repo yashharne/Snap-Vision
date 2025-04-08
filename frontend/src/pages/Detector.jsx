@@ -9,15 +9,15 @@ function Detector() {
   const [summarizedVideoUrl, setSummarizedVideoUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleDetect = async (video, detectType) => {
+  const handleDetect = async (video) => {
     setIsLoading(true);
 
     const formData = new FormData();
     formData.append('video', video);
-    formData.append('type', detectType);
+    // formData.append('type', detectType);
 
     try {
-      const response = await axios.post('YOUR_API_ENDPOINT', formData, {
+      const response = await axios.post('http://127.0.0.1:5000/snap-video', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -53,7 +53,7 @@ function Detector() {
       {isLoading ? (
         <LoadingSpinner />
       ) : summarizedVideoUrl ? (
-        <SummarizedVideoDisplay videoUrl={summarizedVideoUrl} onDownload={handleDownload} onCancel={handleCancel}/>
+        <SummarizedVideoDisplay videoUrl={summarizedVideoUrl} onDownload={handleDownload} onCancel={handleCancel} />
       ) : (
         <VideoUploader onDetect={handleDetect} />
       )}

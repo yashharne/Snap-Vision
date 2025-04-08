@@ -14,13 +14,25 @@ function VideoUploader({ onDetect }) {
     setUploadStatus('green');
   };
 
+  // const handleDetect = async () => {
+  //   if (!video) {
+  //     alert('Please upload a video first.');
+  //     return;
+  //   }
+  //   setLoading(true);
+  //   onDetect(video, detectType, () => setLoading(false));
+  // };
   const handleDetect = async () => {
     if (!video) {
       alert('Please upload a video first.');
       return;
     }
     setLoading(true);
-    onDetect(video, detectType, () => setLoading(false));
+    try {
+      await onDetect(video);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
