@@ -10,6 +10,7 @@ import LoginSignup from "./pages/LoginSignup";
 import History from "./pages/History";
 import "./index.css";
 import Database from "./pages/DataBase";
+import Optimize from "./pages/Optimize";
 import Upload from "./pages/Upload";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/loginSignup" element={<LoginSignup />} />
             <Route path="/upload" element={<Upload />} />
+            <Route path="/optimize" element={<Optimize />} />
           </Routes>
         </div>
         <Footer />

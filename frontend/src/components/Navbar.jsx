@@ -51,6 +51,15 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link
+              to="/optimize"
+              className="nav-links"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Optimize
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
               to="/db"
               className="nav-links"
               onClick={() => setIsMenuOpen(false)}

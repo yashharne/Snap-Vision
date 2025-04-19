@@ -54,6 +54,7 @@ function Database() {
           url: signedUrlData.signedUrl,
           duration: video.duration,
           size: video.size,
+          createdAt: video.created_at,
         };
       })
     );
@@ -106,28 +107,34 @@ function Database() {
               <div
                 key={idx}
                 style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                   marginBottom: "2rem",
                   padding: "1rem",
                   border: "1px solid #ccc",
                   borderRadius: "10px",
-                  backgroundColor: "#f9f9f9",
+                  backgroundColor: "rgba(255, 255, 255, 0.25)", // translucent white
+                  backdropFilter: "blur(5px)", // optional: adds a frosted glass effect
                 }}
               >
-                <h3>{video.name}</h3>
-                <p>Duration: {video.duration}</p>
-                <p>
-                  Size:{" "}
-                  {video.size
-                    ? `${(video.size / (1024 * 1024)).toFixed(2)} MB`
-                    : "Unknown"}
-                </p>
-                <video
-                  controls
-                  width="400"
-                  src={video.url}
-                  preload="metadata"
-                  style={{ marginTop: "0.5rem" }}
-                />
+                <div style={{ flex: 1, paddingRight: "1rem" }}>
+                  <h3>{video.name}</h3>
+                  <p>Duration: {video.duration}</p>
+                  <p>Size: {video.size || "Unknown"}</p>
+                  <p>
+                    Uploaded At: {new Date(video.createdAt).toLocaleString()}
+                  </p>
+                </div>
+                <div>
+                  <video
+                    controls
+                    width="400"
+                    src={video.url}
+                    preload="metadata"
+                    style={{ borderRadius: "8px" }}
+                  />
+                </div>
               </div>
             ))
           )}

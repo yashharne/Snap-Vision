@@ -19,8 +19,7 @@ function Footer() {
         <div className="footer-section">
           <h3>Contact Us</h3>
           <p>IIIT Pune</p>
-          <p>Email: 112115078@cse.iiitp.ac.in</p>
-          <p>Phone: +91 1234567890</p>
+          <p>Pune, Maharashtra, India</p>
         </div>
         <div className="footer-section">
           <h3>Follow Us</h3>
@@ -67,6 +66,9 @@ function Footer() {
           <ul>
             <li>
               <a href="/about">About Us</a>
+            </li>
+            <li>
+              <a href="/optimize">Optimize</a>
             </li>
             <li>
               <a href="/db">Database</a>
